@@ -1,0 +1,45 @@
+﻿@model Merchant
+
+@{
+    ViewData["Title"] = "Delete Merchant";
+}
+
+<div class="container-fluid">
+
+    <h3 class="fw-bold mb-4 text-danger">
+        <i class="fa-solid fa-trash me-2"></i>
+        Delete Merchant
+    </h3>
+
+    <div class="alert alert-danger">
+        Are you sure you want to delete this merchant?
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+
+            <p><strong>User ID:</strong> @Model.UserID</p>
+            <p><strong>Merchant Name:</strong> @Model.MerchantName</p>
+            <p><strong>Merchant Number:</strong> @Model.MerchantNumber</p>
+            <p><strong>Merchant Code:</strong> @Model.MerchantCode</p>
+            <p><strong>TIN:</strong> @Model.Tin</p>
+
+            <form asp-action="DeleteConfirmed" method="post">
+                @Html.AntiForgeryToken()
+
+                <input type="hidden" name="userId" value="@Model.UserID" />
+
+                <button class="btn btn-danger">
+                    <i class="fa-solid fa-trash me-1"></i>
+                    Delete
+                </button>
+
+                <a asp-action="Index" class="btn btn-outline-secondary">
+                    Cancel
+                </a>
+            </form>
+
+        </div>
+    </div>
+
+</div>

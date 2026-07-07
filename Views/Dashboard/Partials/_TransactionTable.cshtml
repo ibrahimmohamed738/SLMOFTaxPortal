@@ -1,0 +1,98 @@
+﻿@model List<TransactionData>
+
+<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <span>
+            <i class="fa-solid fa-list me-2 text-success"></i>
+            Transactions
+        </span>
+        <span class="badge bg-light text-dark">Top @Model.Count records</span>
+    </div>
+
+    <div class="card-body table-responsive">
+        <table class="table table-hover table-sm align-middle">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Trx ID</th>
+                    <th>TIN</th>
+                    <th>Merchant Code</th>
+                    <th>Wallet</th>
+                    <th class="text-end">Gross</th>
+                    <th class="text-end">Tax</th>
+                    <th>Currency</th>
+                    <th>Deduction</th>
+                    <th>Ministry</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.TrxDate.ToString("dd-MMM-yyyy HH:mm")</td>
+                        <td class="fw-semibold">@item.TrxID</td>
+                        <td>@item.Tin</td>
+                        <td>@item.MerchantCode</td>
+                        <td>@item.WalletID</td>
+                        <td class="text-end">@item.Amount.ToString("N2")</td>
+                        <td class="text-end">@item.TaxAmount.ToString("N2")</td>
+
+                        <td>
+                            <span class="badge bg-success-subtle text-success">
+                                @(item.Currency == "101" ? "USD" : "SLS")
+                            </span>
+                        </td>
+
+                        <td>
+                            @if (item.UpdatedTax)
+                            {
+                                <span class="badge bg-success">
+                                    <i class="fa-solid fa-check me-1"></i>
+                                    Successful
+                                </span>
+                            }
+                            else if (!item.UpdatedTax && string.IsNullOrWhiteSpace(item.eDahabStatus))
+                            {
+                                <span class="badge bg-warning text-dark">
+                                    <i class="fa-solid fa-clock me-1"></i>
+                                    Pending
+                                </span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-danger">
+                                    <i class="fa-solid fa-xmark me-1"></i>
+                                    Failed
+                                </span>
+                            }
+                        </td>
+
+                        <td>
+                            @if (item.Updated)
+                            {
+                                <span class="badge bg-success">
+                                    <i class="fa-solid fa-check me-1"></i>
+                                    Updated
+                                </span>
+                            }
+                            else if (!item.Updated && item.UpdatedTax)
+                            {
+                                <span class="badge bg-warning text-dark">
+                                    <i class="fa-solid fa-clock me-1"></i>
+                                    Pending
+                                </span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-secondary">
+                                    Not Ready
+                                </span>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

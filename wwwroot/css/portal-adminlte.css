@@ -1,0 +1,350 @@
+﻿body {
+    font-size: 14px;
+    background-color: #f4f6f9;
+}
+
+/* Header */
+.main-header {
+    min-height: 58px;
+    border-bottom: 1px solid #dee2e6;
+}
+
+    .main-header h5 {
+        font-size: 18px;
+        font-weight: 700;
+    }
+
+    .main-header small {
+        font-size: 12px;
+    }
+
+/* Sidebar */
+.brand-link {
+    padding: 18px 10px 14px;
+    text-align: center;
+}
+
+.brand-image-full {
+    display: block;
+    max-width: 150px;
+    height: auto;
+    margin: 0 auto 6px;
+}
+
+.brand-subtitle {
+    font-size: 13px;
+    color: #6c757d;
+    font-weight: 500;
+}
+
+.nav-sidebar .nav-link {
+    border-radius: 8px;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.nav-sidebar .nav-icon {
+    font-size: 17px !important;
+    width: 24px !important;
+    margin-right: 8px !important;
+    text-align: center;
+}
+
+.nav-sidebar .nav-link.active {
+    background-color: #28a745 !important;
+    color: #fff !important;
+}
+
+/* Content */
+.content-wrapper {
+    background-color: #f4f6f9;
+}
+
+.content {
+    padding-top: 1rem;
+}
+
+/* Cards */
+.card {
+    border: 0;
+    border-radius: 10px;
+    box-shadow: 0 1px 4px rgba(0,0,0,.15);
+}
+
+.card-header {
+    background-color: #fff;
+    border-bottom: 1px solid #e9ecef;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 13px 18px;
+}
+
+    .card-header i {
+        font-size: 16px;
+        margin-right: 6px;
+    }
+
+/* Forms */
+.form-label,
+label {
+    font-size: 14px;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 6px;
+}
+
+    .form-label i,
+    label i {
+        font-size: 16px !important;
+        margin-right: 5px;
+        color: #111827;
+    }
+
+.form-control,
+.form-select,
+.custom-select {
+    height: 38px;
+    min-height: 38px;
+    font-size: 14px;
+    border-radius: 6px;
+    padding: 7px 12px;
+}
+
+select.form-control,
+select.form-select,
+select.custom-select {
+    appearance: auto !important;
+    -webkit-appearance: auto !important;
+    -moz-appearance: auto !important;
+    padding-right: 32px !important;
+}
+
+/* Buttons */
+.btn {
+    height: 38px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+    .btn i {
+        font-size: 16px !important;
+        margin-right: 5px;
+    }
+
+.btn-outline-secondary i,
+.btn-sm i {
+    margin-right: 0;
+}
+
+.btn-sm {
+    height: 32px;
+    padding: 4px 9px;
+}
+
+/* KPI cards */
+.kpi-card .card-body {
+    padding: 22px 20px;
+}
+
+.kpi-title {
+    color: #111827;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.kpi-value {
+    font-size: 22px;
+    font-weight: 700;
+    margin-top: 6px;
+}
+
+.kpi-icon {
+    font-size: 24px !important;
+    color: #111827;
+}
+
+    .kpi-icon i {
+        font-size: 24px !important;
+    }
+
+/* Status cards */
+.status-card .card-body {
+    padding: 18px 20px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.status-card i {
+    font-size: 18px !important;
+}
+
+.status-card strong {
+    font-size: 16px;
+    margin-left: 4px;
+}
+
+/* Tables */
+.table thead th {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #495057;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.table td {
+    vertical-align: middle;
+    font-size: 14px;
+}
+
+.badge {
+    font-size: 12px;
+    padding: 6px 9px;
+}
+
+/* Charts */
+.chart-box {
+    height: 330px;
+}
+
+/* Fix filter layout */
+.filter-card .card-body {
+    padding: 20px;
+}
+
+.filter-card .row {
+    align-items: end;
+}
+
+/* FontAwesome global */
+.fa,
+.fas,
+.fa-solid,
+.fa-regular {
+    font-size: 16px;
+}
+
+/* Admin user icon */
+.navbar .fa-user-shield {
+    font-size: 18px !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .main-header h5 {
+        font-size: 15px;
+    }
+
+    .main-header small {
+        display: none;
+    }
+
+    .chart-box {
+        height: 280px;
+    }
+}
+
+.filter-card .form-label {
+    display: block;
+    margin-bottom: 6px;
+}
+
+    .filter-card .form-label i {
+        width: 18px;
+        text-align: center;
+        margin-right: 5px;
+    }
+
+.filter-card .form-control {
+    width: 100%;
+}
+
+.filter-card .btn {
+    margin-top: 28px;
+}
+
+.filter-card select.form-control {
+    height: 38px;
+}
+
+.filter-card,
+.card-body {
+    padding: 18px 20px;
+}
+
+.form-label {
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: #343a40;
+}
+
+    .form-label i {
+        width: 18px;
+        text-align: center;
+        color: #28a745;
+    }
+
+.form-control {
+    height: 40px;
+    border-radius: 6px;
+}
+
+select.form-control {
+    padding-right: 34px;
+}
+
+.btn {
+    height: 40px;
+    border-radius: 6px;
+    font-weight: 600;
+}
+
+.btn-primary {
+    min-width: 130px;
+}
+
+.btn-outline-secondary {
+    width: 42px;
+    padding: 0;
+}
+
+.btn-reset {
+    width: 42px;
+    min-width: 42px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+    .btn-reset i {
+        margin: 0;
+        font-size: 16px;
+    }
+
+.btn-primary {
+    height: 40px;
+}
+
+.d-flex.gap-2 {
+    align-items: stretch;
+}
+
+.filter-card .btn {
+    height: 38px;
+}
+
+.filter-card .reset-btn {
+    min-width: 95px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.filter-card .d-flex {
+    align-items: center;
+}

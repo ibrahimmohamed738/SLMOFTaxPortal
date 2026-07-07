@@ -1,0 +1,83 @@
+﻿@model DashboardSummary
+@using System.Text.Json
+
+@{
+    ViewData["Title"] = "GST Reporting Dashboard";
+
+    var filter = ViewBag.Filter as ReportFilter ?? new ReportFilter();
+    var trends = ViewBag.Trends as List<DailyTrendDto> ?? new();
+
+    var labels = trends.Select(x => x.TrxDate.ToString("dd-MMM")).ToList();
+    var grossAmounts = trends.Select(x => x.GrossAmount).ToList();
+    var taxAmounts = trends.Select(x => x.TaxAmount).ToList();
+    var transactionCounts = trends.Select(x => x.TotalTransactions).ToList();
+}
+
+<div class="container-fluid">
+
+    @await Html.PartialAsync("Partials/_DashboardFilter", filter)
+
+    @await Html.PartialAsync("Partials/_KpiCards", Model)
+
+    @await Html.PartialAsync("Partials/_Charts")
+
+    @await Html.PartialAsync("Partials/_DailyTrendTable", trends)
+
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        const labels = @Html.Raw(JsonSerializer.Serialize(labels));
+        const grossAmounts = @Html.Raw(JsonSerializer.Serialize(grossAmounts));
+        const taxAmounts = @Html.Raw(JsonSerializer.Serialize(taxAmounts));
+        const transactionCounts = @Html.Raw(JsonSerializer.Serialize(transactionCounts));
+
+        new Chart(document.getElementById('amountChart'), {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'Gross Amount',
+                        data: grossAmounts,
+                        tension: 0.35,
+                        borderWidth: 3,
+                        pointRadius: 4
+                    },
+                    {
+                        label: 'Tax Amount',
+                        data: taxAmounts,
+                        tension: 0.35,
+                        borderWidth: 3,
+                        pointRadius: 4
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
+
+        new Chart(document.getElementById('countChart'), {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'Transactions',
+                        data: transactionCounts,
+                        borderWidth: 1,
+                        borderRadius: 8
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
+    </script>
+}

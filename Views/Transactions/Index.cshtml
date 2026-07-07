@@ -1,0 +1,15 @@
+﻿@model List<TransactionData>
+
+@{
+    ViewData["Title"] = "Transactions";
+
+    var filter = ViewBag.Filter as ReportFilter ?? new ReportFilter();
+}
+
+<div class="container-fluid">
+
+    @await Html.PartialAsync("Partials/_TransactionFilter", filter)
+
+    @await Html.PartialAsync("Partials/_TransactionTable", Model)
+
+</div>

@@ -1,0 +1,65 @@
+﻿@model Merchant
+
+@{
+    ViewData["Title"] = "Merchant Details";
+}
+
+<div class="container-fluid">
+
+    <h3 class="fw-bold mb-4">
+        <i class="fa-solid fa-eye text-success me-2"></i>
+        Merchant Details
+    </h3>
+
+    <div class="card">
+        <div class="card-body">
+
+            <dl class="row">
+                <dt class="col-sm-3">User ID</dt>
+                <dd class="col-sm-9">@Model.UserID</dd>
+
+                <dt class="col-sm-3">Merchant Name</dt>
+                <dd class="col-sm-9">@Model.MerchantName</dd>
+
+                <dt class="col-sm-3">Merchant Number</dt>
+                <dd class="col-sm-9">@Model.MerchantNumber</dd>
+
+                <dt class="col-sm-3">Merchant Code</dt>
+                <dd class="col-sm-9">@Model.MerchantCode</dd>
+
+                <dt class="col-sm-3">TIN</dt>
+                <dd class="col-sm-9">@Model.Tin</dd>
+
+                <dt class="col-sm-3">City</dt>
+                <dd class="col-sm-9">@Model.City</dd>
+
+                <dt class="col-sm-3">Region</dt>
+                <dd class="col-sm-9">@Model.Region</dd>
+
+                <dt class="col-sm-3">Active</dt>
+                <dd class="col-sm-9">
+                    @if (Model.Active)
+                    {
+                        <span class="badge bg-success">Active</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-secondary">Inactive</span>
+                    }
+                </dd>
+            </dl>
+
+            <a asp-action="Edit" asp-route-id="@Model.UserID" class="btn btn-primary">
+                <i class="fa-solid fa-pen me-1"></i>
+                Edit
+            </a>
+
+            <a asp-action="Index" class="btn btn-outline-secondary">
+                <i class="fa-solid fa-arrow-left me-1"></i>
+                Back
+            </a>
+
+        </div>
+    </div>
+
+</div>

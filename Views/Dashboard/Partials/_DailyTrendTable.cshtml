@@ -1,0 +1,46 @@
+﻿@model List<DailyTrendDto>
+
+<div class="card mb-4">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <span>
+            <i class="fa-solid fa-table me-2 text-success"></i>
+            Daily Trend Table
+        </span>
+        <span class="badge bg-light text-dark">@Model.Count days</span>
+    </div>
+
+    <div class="card-body table-responsive">
+        <table class="table table-hover align-middle">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Currency</th>
+                    <th class="text-end">Transactions</th>
+                    <th class="text-end">Gross Amount</th>
+                    <th class="text-end">Tax Amount</th>
+                    <th class="text-end">Successful Deductions</th>
+                    <th class="text-end">Ministry Updated</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.TrxDate.ToString("dd-MMM-yyyy")</td>
+                        <td>
+                            <span class="badge bg-success-subtle text-success">
+                                @(item.Currency == "101" ? "USD" : "SLS")
+                            </span>
+                        </td>
+                        <td class="text-end">@item.TotalTransactions</td>
+                        <td class="text-end">@item.GrossAmount.ToString("N2")</td>
+                        <td class="text-end">@item.TaxAmount.ToString("N2")</td>
+                        <td class="text-end">@item.SuccessfulDeductions</td>
+                        <td class="text-end">@item.MinistryUpdated</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

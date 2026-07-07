@@ -1,0 +1,84 @@
+﻿@model Merchant
+
+<div class="card">
+    <div class="card-body">
+
+        <form method="post">
+
+            @Html.AntiForgeryToken()
+
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+            <div class="row g-3">
+
+                <div class="col-md-4">
+                    <label asp-for="UserID" class="form-label">User ID</label>
+                    <input asp-for="UserID" class="form-control" />
+                    <span asp-validation-for="UserID" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-4">
+                    <label asp-for="MerchantName" class="form-label">Merchant Name</label>
+                    <input asp-for="MerchantName" class="form-control" />
+                    <span asp-validation-for="MerchantName" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-4">
+                    <label asp-for="MerchantNumber" class="form-label">Merchant Number</label>
+                    <input asp-for="MerchantNumber" class="form-control" />
+                    <span asp-validation-for="MerchantNumber" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-4">
+                    <label asp-for="MerchantCode" class="form-label">Merchant Code</label>
+                    <input asp-for="MerchantCode" class="form-control" />
+                    <span asp-validation-for="MerchantCode" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-4">
+                    <label asp-for="Tin" class="form-label">TIN</label>
+                    <input asp-for="Tin" class="form-control" />
+                    <span asp-validation-for="Tin" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-4">
+                    <label asp-for="City" class="form-label">City</label>
+                    <input asp-for="City" class="form-control" />
+                    <span asp-validation-for="City" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-4">
+                    <label asp-for="Region" class="form-label">Region</label>
+                    <input asp-for="Region" class="form-control" />
+                    <span asp-validation-for="Region" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-4 d-flex align-items-end">
+                    <div class="form-check form-switch">
+                        <input asp-for="Active" class="form-check-input" />
+                        <label asp-for="Active" class="form-check-label">Active</label>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="mt-4 d-flex gap-2">
+                <button class="btn btn-primary">
+                    <i class="fa-solid fa-floppy-disk me-1"></i>
+                    Save
+                </button>
+
+                <a asp-action="Index" class="btn btn-outline-secondary">
+                    <i class="fa-solid fa-arrow-left me-1"></i>
+                    Back
+                </a>
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

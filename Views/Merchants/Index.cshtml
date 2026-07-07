@@ -1,0 +1,81 @@
+﻿@model IEnumerable<Merchant>
+
+@{
+    ViewData["Title"] = "Merchant Management";
+}
+
+<div class="container-fluid">
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">
+            <i class="fa-solid fa-circle-check me-1"></i>
+            @TempData["Success"]
+        </div>
+    }
+
+    <div class="card">
+        <div class="card-header">
+            <i class="fa-solid fa-list me-2 text-success"></i>
+            Merchants
+        </div>
+
+        <div class="card-body table-responsive">
+            <table class="table table-hover align-middle table-sm">
+                <thead>
+                    <tr>
+                        <th>User ID</th>
+                        <th>Merchant Name</th>
+                        <th>Merchant Number</th>
+                        <th>Merchant Code</th>
+                        <th>TIN</th>
+                        <th>City</th>
+                        <th>Region</th>
+                        <th>Status</th>
+                        <th class="text-end">Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.UserID</td>
+                            <td class="fw-semibold">@item.MerchantName</td>
+                            <td>@item.MerchantNumber</td>
+                            <td>@item.MerchantCode</td>
+                            <td>@item.Tin</td>
+                            <td>@item.City</td>
+                            <td>@item.Region</td>
+                            <td>
+                                @if (item.Active)
+                                {
+                                    <span class="badge bg-success">Active</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-secondary">Inactive</span>
+                                }
+                            </td>
+                            <td class="text-end">
+                                <a asp-action="Details" asp-route-id="@item.UserID" class="btn btn-sm btn-outline-info">
+                                    <i class="fa-solid fa-eye"></i>
+                                </a>
+
+                                <a asp-action="Edit" asp-route-id="@item.UserID" class="btn btn-sm btn-outline-primary">
+                                    <i class="fa-solid fa-pen"></i>
+                                </a>
+
+                                <a asp-action="Delete" asp-route-id="@item.UserID" class="btn btn-sm btn-outline-danger">
+                                    <i class="fa-solid fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+
+</div>

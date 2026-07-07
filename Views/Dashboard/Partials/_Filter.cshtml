@@ -1,0 +1,114 @@
+﻿@model ReportFilter
+
+<div class="card filter-card mb-4">
+    <div class="card-body">
+        <form method="get" class="row g-3">
+
+            <div class="col-lg-2 col-md-4">
+                <label class="form-label">
+                    <i class="fa-regular fa-calendar-days me-1"></i>
+                    Date From
+                </label>
+                <input type="date"
+                       name="FromDate"
+                       value="@Model.FromDate.ToString("yyyy-MM-dd")"
+                       class="form-control" />
+            </div>
+
+            <div class="col-lg-2 col-md-4">
+                <label class="form-label">
+                    <i class="fa-regular fa-calendar-check me-1"></i>
+                    Date To
+                </label>
+                <input type="date"
+                       name="ToDate"
+                       value="@Model.ToDate.ToString("yyyy-MM-dd")"
+                       class="form-control" />
+            </div>
+
+            <div class="col-lg-2 col-md-4">
+                <label class="form-label">
+                    <i class="fa-solid fa-coins me-1"></i>
+                    Currency
+                </label>
+                <select name="Currency" class="form-select">
+                    <option value="101" selected="@(Model.Currency == "101")">USD</option>
+                    <option value="102" selected="@(Model.Currency == "102")">SLS</option>
+                </select>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <label class="form-label">
+                    <i class="fa-solid fa-store me-1"></i>
+                    Merchant
+                </label>
+                <input type="text"
+                       name="MerchantSearch"
+                       value="@Model.MerchantSearch"
+                       placeholder="Merchant name or code"
+                       class="form-control" />
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <label class="form-label">
+                    <i class="fa-solid fa-id-card me-1"></i>
+                    TIN
+                </label>
+                <input type="text"
+                       name="Tin"
+                       value="@Model.Tin"
+                       placeholder="TIN"
+                       class="form-control" />
+            </div>
+
+            <div class="col-lg-3 col-md-4">
+                <label class="form-label">
+                    <i class="fa-solid fa-money-check-dollar me-1"></i>
+                    Deduction Status
+                </label>
+                <select name="DeductionStatus" class="form-select">
+                    <option value="">Any</option>
+                    <option value="Successful" selected="@(Model.DeductionStatus == "Successful")">Successful</option>
+                    <option value="Pending" selected="@(Model.DeductionStatus == "Pending")">Pending</option>
+                    <option value="Failed" selected="@(Model.DeductionStatus == "Failed")">Failed</option>
+                </select>
+            </div>
+
+            <div class="col-lg-3 col-md-4">
+                <label class="form-label">
+                    <i class="fa-solid fa-building-columns me-1"></i>
+                    Ministry Status
+                </label>
+                <select name="MinistryStatus" class="form-select">
+                    <option value="">Any</option>
+                    <option value="Updated" selected="@(Model.MinistryStatus == "Updated")">Updated</option>
+                    <option value="Pending" selected="@(Model.MinistryStatus == "Pending")">Pending</option>
+                </select>
+            </div>
+
+            <div class="col-lg-3 col-md-4">
+                <label class="form-label">
+                    <i class="fa-solid fa-hashtag me-1"></i>
+                    Transaction ID
+                </label>
+                <input type="text"
+                       name="TransactionId"
+                       value="@Model.TransactionId"
+                       placeholder="Transaction ID"
+                       class="form-control" />
+            </div>
+
+            <div class="col-lg-3 col-md-12 d-flex align-items-end gap-2">
+                <button class="btn btn-primary flex-fill">
+                    <i class="fa-solid fa-filter me-1"></i>
+                    Filter
+                </button>
+
+                <a asp-controller="Dashboard" asp-action="Index" class="btn btn-outline-secondary">
+                    <i class="fa-solid fa-rotate-right"></i>
+                </a>
+            </div>
+
+        </form>
+    </div>
+</div>

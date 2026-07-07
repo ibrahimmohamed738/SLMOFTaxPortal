@@ -1,0 +1,121 @@
+﻿@model ReportFilter
+
+<div class="card filter-card mb-4">
+    <div class="card-body">
+
+        <form method="get" class="row g-3">
+
+            <div class="col-xl-3 col-lg-4 col-md-6">
+                <label class="form-label">
+                    <i class="fas fa-calendar-alt"></i>
+                    Date From
+                </label>
+                <input type="date"
+                       name="FromDate"
+                       value="@Model.FromDate.ToString("yyyy-MM-dd")"
+                       class="form-control" />
+            </div>
+
+            <div class="col-xl-3 col-lg-4 col-md-6">
+                <label class="form-label">
+                    <i class="fas fa-calendar-check"></i>
+                    Date To
+                </label>
+                <input type="date"
+                       name="ToDate"
+                       value="@Model.ToDate.ToString("yyyy-MM-dd")"
+                       class="form-control" />
+            </div>
+
+            <div class="col-xl-3 col-lg-4 col-md-6">
+                <label class="form-label">
+                    <i class="fas fa-coins"></i>
+                    Currency
+                </label>
+                <select name="Currency" class="form-control">
+                    <option value="101" selected="@(Model.Currency == "101")">USD</option>
+                    <option value="102" selected="@(Model.Currency == "102")">SLS</option>
+                </select>
+            </div>
+
+            <div class="col-xl-3 col-lg-4 col-md-6">
+                <label class="form-label">
+                    <i class="fas fa-store"></i>
+                    Merchant
+                </label>
+                <input type="text"
+                       name="MerchantSearch"
+                       value="@Model.MerchantSearch"
+                       placeholder="Merchant name or code"
+                       class="form-control" />
+            </div>
+
+            <div class="col-xl-3 col-lg-4 col-md-6">
+                <label class="form-label">
+                    <i class="fas fa-id-card"></i>
+                    TIN
+                </label>
+                <input type="text"
+                       name="Tin"
+                       value="@Model.Tin"
+                       placeholder="TIN"
+                       class="form-control" />
+            </div>
+
+            <div class="col-xl-3 col-lg-4 col-md-6">
+                <label class="form-label">
+                    <i class="fas fa-money-check-alt"></i>
+                    Deduction Status
+                </label>
+                <select name="DeductionStatus" class="form-control">
+                    <option value="">Any</option>
+                    <option value="Successful" selected="@(Model.DeductionStatus == "Successful")">Successful</option>
+                    <option value="Pending" selected="@(Model.DeductionStatus == "Pending")">Pending</option>
+                    <option value="Failed" selected="@(Model.DeductionStatus == "Failed")">Failed</option>
+                </select>
+            </div>
+
+            <div class="col-xl-3 col-lg-4 col-md-6">
+                <label class="form-label">
+                    <i class="fas fa-university"></i>
+                    Ministry Status
+                </label>
+                <select name="MinistryStatus" class="form-control">
+                    <option value="">Any</option>
+                    <option value="Updated" selected="@(Model.MinistryStatus == "Updated")">Updated</option>
+                    <option value="Pending" selected="@(Model.MinistryStatus == "Pending")">Pending</option>
+                </select>
+            </div>
+
+            <div class="col-xl-3 col-lg-4 col-md-6">
+                <label class="form-label">
+                    <i class="fas fa-hashtag"></i>
+                    Transaction ID
+                </label>
+                <input type="text"
+                       name="TransactionId"
+                       value="@Model.TransactionId"
+                       placeholder="Transaction ID"
+                       class="form-control" />
+            </div>
+
+            <div class="col-xl-3 col-lg-4 col-md-6">
+                <button type="submit" class="btn btn-primary w-100">
+                    <i class="fas fa-filter"></i>
+                    Filter
+                </button>
+            </div>
+
+            <div class="col-xl-2 col-lg-3 col-md-6">
+                <a asp-controller="Transactions"
+                   asp-action="Index"
+                   class="btn btn-outline-secondary w-100">
+                    <i class="fas fa-sync-alt"></i>
+                    Reset
+                </a>
+            </div>
+
+        </form>
+
+    </div>
+</div>
