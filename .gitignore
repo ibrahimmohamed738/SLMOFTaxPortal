@@ -1,0 +1,91 @@
+﻿# Build folders
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Visual Studio
+.vs/
+.vscode/
+
+# Rider
+.idea/
+
+# ASP.NET Core
+wwwroot/uploads/
+wwwroot/logs/
+
+# Logs
+*.log
+logs/
+LogFiles/
+
+# Publish output
+publish/
+artifacts/
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+!**/packages/build/
+
+# Entity Framework
+*.dbmdl
+
+# IIS Express
+applicationhost.config
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# macOS
+.DS_Store
+
+# Environment files
+.env
+.env.*
+appsettings.Development.json
+
+# Secrets
+secrets.json
+
+# Node.js (if used)
+node_modules/
+
+# Yarn
+yarn-error.log
+
+# npm
+npm-debug.log*
+
+# Temporary files
+*.tmp
+*.temp
+*.cache
+
+# Test results
+TestResults/
+
+# Coverage
+coverage/
+*.coverage
+*.coveragexml
+
+# Resharper
+_ReSharper*/
+*.DotSettings.user
+
+# JetBrains Rider
+.idea/
+
+# Azure
+.publishsettings
+
+# Generated files
+Generated/
