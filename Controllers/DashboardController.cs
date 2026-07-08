@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SLMOFTaxPortal.Models;
 using SLMOFTaxPortal.Services;
 
 namespace SLMOFTaxPortal.Controllers;
 
+[Authorize(Policy = "ViewDashboard")]
 public class DashboardController(IReportService reportService) : Controller
 {
     public async Task<IActionResult> Index([FromQuery] ReportFilter filter)

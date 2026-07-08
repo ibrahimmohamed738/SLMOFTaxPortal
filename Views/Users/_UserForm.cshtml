@@ -1,0 +1,77 @@
+﻿@model UserFormViewModel
+
+<form method="post">
+    @Html.AntiForgeryToken()
+
+    <input type="hidden" asp-for="Id" />
+
+    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+    <div class="row">
+
+        <div class="col-md-6 form-group">
+            <label asp-for="FullName">Full Name</label>
+            <input asp-for="FullName" class="form-control" />
+            <span asp-validation-for="FullName" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-6 form-group">
+            <label asp-for="Username">Username</label>
+            <input asp-for="Username" class="form-control" />
+            <span asp-validation-for="Username" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-6 form-group">
+            <label asp-for="Email">Email</label>
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-6 form-group">
+            <label asp-for="RoleId">Role</label>
+            <select asp-for="RoleId" asp-items="ViewBag.Roles" class="form-control">
+                <option value="">Select Role</option>
+            </select>
+            <span asp-validation-for="RoleId" class="text-danger"></span>
+        </div>
+
+        @if (Model.Id == 0)
+        {
+            <div class="col-md-6 form-group">
+                <label asp-for="Password">Password</label>
+                <input asp-for="Password" type="password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+        }
+
+        <div class="col-md-3 form-group">
+            <label>Status</label>
+            <div class="custom-control custom-switch mt-2">
+                <input asp-for="Active" class="custom-control-input" id="ActiveSwitch" />
+                <label class="custom-control-label" for="ActiveSwitch">Active</label>
+            </div>
+        </div>
+
+        <div class="col-md-3 form-group">
+            <label>Password</label>
+            <div class="custom-control custom-switch mt-2">
+                <input asp-for="ForceChangePassword" class="custom-control-input" id="ForceChangeSwitch" />
+                <label class="custom-control-label" for="ForceChangeSwitch">Force Change</label>
+            </div>
+        </div>
+
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+        <i class="fas fa-save mr-1"></i>
+        Save
+    </button>
+
+    <a asp-action="Index" class="btn btn-outline-secondary ml-2">
+        Back
+    </a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

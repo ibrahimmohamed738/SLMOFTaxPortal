@@ -1,0 +1,257 @@
+﻿@model IEnumerable<UserListViewModel>
+@using SLMOFTaxPortal.Helpers
+
+@{
+    ViewData["Title"] = "Users Management";
+}
+
+<div class="card">
+
+    <div class="card-header">
+
+        <div class="d-flex justify-content-between align-items-center">
+
+            <div>
+
+                <h5 class="mb-0">
+                    <i class="fas fa-users text-success mr-2"></i>
+                    Users Management
+                </h5>
+
+                <small class="text-muted">
+                    Total Users :
+                    <strong>@Model.Count()</strong>
+                </small>
+
+            </div>
+
+            @if (User.HasPermission("ManageUsers"))
+            {
+                <a asp-action="Create" class="btn btn-success">
+
+                    <i class="fas fa-user-plus mr-1"></i>
+
+                    Add User
+
+                </a>
+            }
+
+        </div>
+
+    </div>
+
+    <div class="card-body">
+
+        @if (TempData["Success"] != null)
+        {
+            <div class="alert alert-success">
+
+                <i class="fas fa-check-circle mr-2"></i>
+
+                @TempData["Success"]
+
+            </div>
+        }
+
+        <div class="row mb-3">
+
+            <div class="col-md-4">
+
+                <input type="text"
+                       id="userSearch"
+                       class="form-control"
+                       placeholder="Search user..." />
+
+            </div>
+
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-hover table-striped portal-table" id="usersTable">
+                <thead>
+
+                    <tr>
+
+                        <th>Full Name</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>Status</th>
+                        <th>Failed</th>
+                        <th>Last Login</th>
+                        <th>Password</th>
+                        <th width="260">Actions</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+
+                            <td>
+                                <strong>@item.FullName</strong>
+                            </td>
+
+                            <td>@item.Username</td>
+
+                            <td>@item.Email</td>
+
+                            <td>
+
+                                @switch (item.RoleName)
+                                {
+                                    case "Admin":
+
+                                        <span class="badge bg-danger">
+                                            Admin
+                                        </span>
+
+                                        break;
+
+                                    case "Manager":
+
+                                        <span class="badge bg-warning">
+                                            Manager
+                                        </span>
+
+                                        break;
+
+                                    default:
+
+                                        <span class="badge bg-info">
+                                            User
+                                        </span>
+
+                                        break;
+                                }
+
+                            </td>
+
+                            <td>
+
+                                @if (item.Active)
+                                {
+                                    <span class="badge bg-success">
+                                        Active
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-secondary">
+                                        Disabled
+                                    </span>
+                                }
+
+                            </td>
+
+                            <td>
+
+                                @if (item.FailedLoginCount > 0)
+                                {
+                                    <span class="badge bg-danger">
+                                        @item.FailedLoginCount
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-success">
+                                        0
+                                    </span>
+                                }
+
+                            </td>
+
+                            <td>
+
+                                @(item.LastLoginAt?.ToString("dd-MMM-yyyy HH:mm") ?? "-")
+
+                            </td>
+
+                            <td>
+
+                                @if (item.ForceChangePassword)
+                                {
+                                    <span class="badge bg-warning">
+                                        Must Change
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-success">
+                                        OK
+                                    </span>
+                                }
+
+                            </td>
+
+                            <td class="text-right action-cell">
+                                @if (User.HasPermission("ManageUsers"))
+                                {
+                                    <div class="btn-group btn-group-sm" role="group">
+
+                                        <a asp-action="Edit"
+                                           asp-route-id="@item.Id"
+                                           class="btn btn-outline-primary">
+                                            <i class="fas fa-edit"></i>
+                                            Edit
+                                        </a>
+
+                                        <a asp-action="ResetPassword"
+                                           asp-route-id="@item.Id"
+                                           class="btn btn-outline-warning">
+                                            <i class="fas fa-key"></i>
+                                            Reset
+                                        </a>
+
+                                        <a asp-action="Delete"
+                                           asp-route-id="@item.Id"
+                                           class="btn btn-outline-danger"
+                                           onclick="return confirm('Disable this user?');">
+                                            <i class="fas fa-ban"></i>
+                                            Disable
+                                        </a>
+
+                                    </div>
+                                }
+                            </td>
+
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts {
+
+    <script>
+
+        $("#userSearch").on("keyup", function () {
+
+            var value = $(this).val().toLowerCase();
+
+            $("#usersTable tbody tr").filter(function () {
+
+                $(this).toggle(
+
+                    $(this).text().toLowerCase().indexOf(value) > -1
+
+                );
+
+            });
+
+        });
+
+    </script>
+
+}

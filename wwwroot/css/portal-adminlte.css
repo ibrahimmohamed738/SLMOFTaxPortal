@@ -348,3 +348,38 @@ select.form-control {
 .filter-card .d-flex {
     align-items: center;
 }
+
+#usersTable td {
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+#usersTable th {
+    white-space: nowrap;
+}
+
+#usersTable .btn {
+    height: 32px;
+    min-width: auto;
+    padding: 4px 10px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+    #usersTable .btn i {
+        margin-right: 4px;
+    }
+
+#usersTable .badge {
+    font-size: 12px;
+    padding: 6px 10px;
+}
+
+.action-cell {
+    min-width: 230px;
+}
+
+#userSearch {
+    max-width: 320px;
+    height: 40px;
+}

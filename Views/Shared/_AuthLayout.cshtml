@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"] - eDahab GST Portal</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Lumen Bootstrap 5.3 -->
+    <link href="~/lib/lumen/bootstrap.min.css" rel="stylesheet" asp-append-version="true" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+    <style>
+        body {
+            background: #f6f6f6;
+            min-height: 100vh;
+        }
+
+        .auth-wrapper {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px 15px;
+        }
+
+        .auth-card {
+            width: 100%;
+            max-width: 430px;
+        }
+
+        .auth-logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+            .auth-logo img {
+                max-width: 180px;
+                height: auto;
+                margin-bottom: 10px;
+            }
+
+            .auth-logo h4 {
+                font-weight: 700;
+                margin-bottom: 3px;
+            }
+
+            .auth-logo p {
+                color: #999;
+                margin-bottom: 0;
+                font-size: 14px;
+            }
+
+        .auth-content {
+            background: #fff;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,.08);
+            padding: 28px;
+        }
+
+        .auth-footer {
+            text-align: center;
+            margin-top: 16px;
+            font-size: 13px;
+            color: #999;
+        }
+
+        .btn {
+            font-weight: 600;
+        }
+
+        .input-group-text {
+            background-color: #f6f6f6;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="auth-wrapper">
+
+        <div class="auth-card">
+
+            <div class="auth-logo">
+                <img src="~/images/edahab-logo.png" alt="eDahab" />
+
+                <h4>GST Reporting Portal</h4>
+
+                <p>Merchant GST deduction and Ministry reporting</p>
+            </div>
+
+            <div class="auth-content">
+                @RenderBody()
+            </div>
+
+            <div class="auth-footer">
+                &copy; @DateTime.Now.Year eDahab GST Reporting Portal
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+
+    <!-- Bootstrap 5.3 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

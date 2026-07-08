@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SLMOFTaxPortal.Models;
 using SLMOFTaxPortal.Services;
 
 namespace SLMOFTaxPortal.Controllers;
 
+[Authorize(Policy = "ViewMerchants")]
 public class MerchantsController(IMerchantManagementService merchantService) : Controller
 {
     public async Task<IActionResult> Index()
@@ -12,6 +14,7 @@ public class MerchantsController(IMerchantManagementService merchantService) : C
         return View(merchants);
     }
 
+    [Authorize(Policy = "ManageMerchants")]
     public IActionResult Create()
     {
         return View(new Merchant { Active = true });

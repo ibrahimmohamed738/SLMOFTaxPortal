@@ -1,0 +1,126 @@
+﻿body {
+    background: #f6f6f6;
+}
+
+.portal-logo {
+    height: 34px;
+    max-width: 110px;
+    object-fit: contain;
+    background: #fff;
+    border-radius: 4px;
+    padding: 3px 6px;
+}
+
+.navbar-brand {
+    font-weight: 700;
+}
+
+.navbar .nav-link {
+    font-weight: 600;
+}
+
+    .navbar .nav-link.active {
+        color: #fff !important;
+        border-bottom: 2px solid #28b62c;
+    }
+
+.page-header h4 {
+    color: #222;
+}
+
+.card {
+    border: 1px solid #dee2e6;
+    box-shadow: 0 1px 3px rgba(0,0,0,.08);
+}
+
+.card-header {
+    background: #fff;
+    font-weight: 700;
+}
+
+.table thead th {
+    background: #f0f0f0;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.table td {
+    vertical-align: middle;
+}
+
+.badge {
+    font-size: 12px;
+    padding: 6px 9px;
+}
+
+.btn {
+    font-weight: 600;
+}
+
+.filter-card .form-label {
+    font-weight: 700;
+}
+
+.chart-box {
+    height: 330px;
+}
+.table td,
+.table th {
+    color: #222 !important;
+}
+
+.table tbody tr,
+.table tbody td {
+    background-color: #fff !important;
+}
+
+.table-striped tbody tr:nth-of-type(odd) td {
+    background-color: #f8f9fa !important;
+}
+
+.badge {
+    color: #fff !important;
+    font-weight: 700;
+}
+
+    .badge.bg-light,
+    .badge.text-dark {
+        color: #222 !important;
+    }
+
+.table .btn {
+    font-weight: 700;
+}
+
+.table .btn-primary,
+.table .btn-success,
+.table .btn-danger,
+.table .btn-warning,
+.table .btn-info {
+    color: #fff !important;
+}
+
+.table .btn-outline-primary {
+    color: #158cba !important;
+}
+
+.table .btn-outline-warning {
+    color: #ff851b !important;
+}
+
+.table .btn-outline-danger {
+    color: #ff4136 !important;
+}
+
+.dataTables_wrapper .dataTables_filter input {
+    margin-left: 8px;
+}
+
+.dataTables_wrapper .dataTables_length select {
+    margin: 0 6px;
+}
+
+.dataTables_wrapper .pagination {
+    margin-bottom: 0;
+}
