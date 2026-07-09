@@ -1,0 +1,128 @@
+﻿@model PermissionViewModel
+
+<form method="post">
+
+    @Html.AntiForgeryToken()
+
+    <input asp-for="Id" type="hidden" />
+
+    <div class="row">
+
+        <div class="col-md-6 mb-3">
+
+            <label class="form-label fw-bold">
+
+                Permission Code
+
+            </label>
+
+            <input asp-for="PermissionCode"
+                   class="form-control"
+                   placeholder="ViewDashboard" />
+
+            <span asp-validation-for="PermissionCode"
+                  class="text-danger"></span>
+
+        </div>
+
+        <div class="col-md-6 mb-3">
+
+            <label class="form-label fw-bold">
+
+                Permission Name
+
+            </label>
+
+            <input asp-for="PermissionName"
+                   class="form-control"
+                   placeholder="View Dashboard" />
+
+        </div>
+
+        <div class="col-md-6 mb-3">
+
+            <label class="form-label fw-bold">
+
+                Module
+
+            </label>
+
+            <select asp-for="Module"
+                    class="form-select">
+
+                <option value="">Select Module</option>
+
+                <option>Dashboard</option>
+
+                <option>Transactions</option>
+
+                <option>Merchants</option>
+
+                <option>Reports</option>
+
+                <option>Security</option>
+
+                <option>Administration</option>
+
+            </select>
+
+        </div>
+
+        <div class="col-md-6 mb-3 d-flex align-items-center">
+
+            <div class="form-check form-switch mt-4">
+
+                <input asp-for="Active"
+                       class="form-check-input" />
+
+                <label class="form-check-label">
+
+                    Active
+
+                </label>
+
+            </div>
+
+        </div>
+
+        <div class="col-12">
+
+            <label class="form-label fw-bold">
+
+                Description
+
+            </label>
+
+            <textarea asp-for="Description"
+                      rows="3"
+                      class="form-control"
+                      placeholder="Describe what this permission allows..."></textarea>
+
+        </div>
+
+    </div>
+
+    <hr />
+
+    <div class="d-flex gap-2">
+
+        <button class="btn btn-success">
+
+            <i class="fa-solid fa-save me-1"></i>
+
+            Save
+
+        </button>
+
+        <a asp-action="Index"
+           class="btn btn-outline-secondary">
+
+            <i class="fa-solid fa-arrow-left me-1"></i>
+
+            Back
+
+        </a>
+
+    </div>
+
+</form>

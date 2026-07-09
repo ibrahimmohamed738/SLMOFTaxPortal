@@ -1,0 +1,61 @@
+﻿@model RolePermissionViewModel
+
+@{
+    ViewData["Title"] = "Role Permissions";
+}
+
+<div class="card">
+    <div class="card-header">
+        <i class="fa-solid fa-lock text-success me-2"></i>
+        <strong>Permissions for @Model.RoleName</strong>
+    </div>
+
+    <div class="card-body">
+
+        <form method="post">
+            @Html.AntiForgeryToken()
+
+            <input type="hidden" name="roleId" value="@Model.RoleId" />
+
+            <div class="row g-3">
+                @foreach (var permission in Model.Permissions)
+                {
+                    <div class="col-md-4">
+                        <div class="border rounded p-3 bg-white h-100">
+                            <div class="form-check">
+                                <input type="checkbox"
+                                       class="form-check-input"
+                                       name="permissionIds"
+                                       value="@permission.PermissionId"
+                                       id="perm_@permission.PermissionId"
+                                       checked="@permission.IsSelected" />
+
+                                <label class="form-check-label fw-bold"
+                                       for="perm_@permission.PermissionId">
+                                    @permission.PermissionName
+                                </label>
+                            </div>
+
+                            <small class="text-muted d-block mt-1">
+                                @permission.PermissionCode
+                            </small>
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <div class="mt-4 d-flex gap-2">
+                <button type="submit" class="btn btn-success">
+                    <i class="fa-solid fa-save me-1"></i>
+                    Save Permissions
+                </button>
+
+                <a asp-action="Index" class="btn btn-outline-secondary">
+                    <i class="fa-solid fa-arrow-left me-1"></i>
+                    Back
+                </a>
+            </div>
+        </form>
+
+    </div>
+</div>

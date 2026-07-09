@@ -23,7 +23,7 @@
 
 <body>
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark shadow-sm">
-        <div class="container-fluid">
+        <div class="container">
 
             <a class="navbar-brand d-flex align-items-center" asp-controller="Dashboard" asp-action="Index">
                 <img src="~/images/edahab-logo.png" class="portal-logo me-2" />
@@ -44,63 +44,371 @@
 
                 <ul class="navbar-nav me-auto">
 
-                    @if (User.HasPermission("ViewDashboard"))
+                    <!-- Dashboard -->
+                    @if (User.HasPermission(AppPermissions.ViewDashboard))
                     {
                         <li class="nav-item">
                             <a asp-controller="Dashboard"
                                asp-action="Index"
                                class="nav-link @(controller == "Dashboard" ? "active" : "")">
-                                <i class="fa-solid fa-chart-pie me-1"></i>
+
+                                <i class="fa-solid fa-chart-line me-1"></i>
+
                                 Dashboard
+
                             </a>
                         </li>
                     }
 
-                    @if (User.HasPermission("ViewTransactions"))
+                    <!-- Transactions -->
+                    @if (User.HasPermission(AppPermissions.ViewTransactions))
                     {
-                        <li class="nav-item">
-                            <a asp-controller="Transactions"
-                               asp-action="Index"
-                               class="nav-link @(controller == "Transactions" ? "active" : "")">
-                                <i class="fa-solid fa-receipt me-1"></i>
+                        <li class="nav-item dropdown">
+
+                            <a class="nav-link dropdown-toggle @(controller == "Transactions" ? "active" : "")"
+                               href="#"
+                               data-bs-toggle="dropdown">
+
+                                <i class="fa-solid fa-money-bill-transfer me-1"></i>
+
                                 Transactions
+
                             </a>
+
+                            <ul class="dropdown-menu">
+
+                                <li>
+
+                                    <a asp-controller="Transactions"
+                                       asp-action="Index"
+                                       class="dropdown-item">
+
+                                        <i class="fa-solid fa-list me-2 text-primary"></i>
+
+                                        Transactions
+
+                                    </a>
+
+                                </li>
+
+                                <li>
+
+                                    <a asp-controller="Transactions"
+                                       asp-action="Failed"
+                                       class="dropdown-item">
+
+                                        <i class="fa-solid fa-circle-xmark me-2 text-danger"></i>
+
+                                        Failed Deductions
+
+                                    </a>
+
+                                </li>
+
+                                <li>
+
+                                    <a asp-controller="Transactions"
+                                       asp-action="MinistryUpdates"
+                                       class="dropdown-item">
+
+                                        <i class="fa-solid fa-building-columns me-2 text-success"></i>
+
+                                        Ministry Updates
+
+                                    </a>
+
+                                </li>
+
+                            </ul>
+
                         </li>
                     }
 
-                    @if (User.HasPermission("ViewMerchants"))
+                    <!-- Merchants -->
+                    @if (User.HasPermission(AppPermissions.ViewMerchants))
                     {
-                        <li class="nav-item">
-                            <a asp-controller="Merchants"
-                               asp-action="Index"
-                               class="nav-link @(controller == "Merchants" ? "active" : "")">
+                        <li class="nav-item dropdown">
+
+                            <a class="nav-link dropdown-toggle @(controller == "Merchants" ? "active" : "")"
+                               href="#"
+                               data-bs-toggle="dropdown">
+
                                 <i class="fa-solid fa-store me-1"></i>
+
                                 Merchants
+
                             </a>
+
+                            <ul class="dropdown-menu">
+
+                                <li>
+
+                                    <a asp-controller="Merchants"
+                                       asp-action="Index"
+                                       class="dropdown-item">
+
+                                        <i class="fa-solid fa-store me-2 text-success"></i>
+
+                                        Merchant Management
+
+                                    </a>
+
+                                </li>
+
+                                <li>
+
+                                    <a asp-controller="Merchants"
+                                       asp-action="Import"
+                                       class="dropdown-item">
+
+                                        <i class="fa-solid fa-file-import me-2 text-primary"></i>
+
+                                        Import Merchants
+
+                                    </a>
+
+                                </li>
+
+                            </ul>
+
                         </li>
                     }
 
-                    @if (User.HasPermission("ViewUsers") || User.HasPermission("ManageUsers"))
+                    <!-- Reports -->
+                    @if (User.HasPermission(AppPermissions.ViewReports))
                     {
-                        <li class="nav-item">
-                            <a asp-controller="Users"
-                               asp-action="Index"
-                               class="nav-link @(controller == "Users" ? "active" : "")">
-                                <i class="fa-solid fa-users-gear me-1"></i>
-                                Users
+                        <li class="nav-item dropdown">
+
+                            <a class="nav-link dropdown-toggle"
+                               href="#"
+                               data-bs-toggle="dropdown">
+
+                                <i class="fa-solid fa-chart-column me-1"></i>
+
+                                Reports
+
                             </a>
+
+                            <ul class="dropdown-menu">
+
+                                <li>
+
+                                    <a asp-controller="Reports"
+                                       asp-action="DailySummary"
+                                       class="dropdown-item">
+
+                                        <i class="fa-solid fa-calendar-day me-2 text-primary"></i>
+
+                                        Daily Summary
+
+                                    </a>
+
+                                </li>
+
+                                <li>
+
+                                    <a asp-controller="Reports"
+                                       asp-action="Transactions"
+                                       class="dropdown-item">
+
+                                        <i class="fa-solid fa-file-lines me-2 text-success"></i>
+
+                                        Transaction Report
+
+                                    </a>
+
+                                </li>
+
+                                <li>
+
+                                    <a asp-controller="Reports"
+                                       asp-action="Ministry"
+                                       class="dropdown-item">
+
+                                        <i class="fa-solid fa-building-columns me-2 text-warning"></i>
+
+                                        Ministry Report
+
+                                    </a>
+
+                                </li>
+
+                                <li>
+
+                                    <a asp-controller="Reports"
+                                       asp-action="Collection"
+                                       class="dropdown-item">
+
+                                        <i class="fa-solid fa-sack-dollar me-2 text-success"></i>
+
+                                        GST Collection
+
+                                    </a>
+
+                                </li>
+
+                            </ul>
+
                         </li>
                     }
 
-                    @if (User.HasPermission("ManageSettings"))
+                    <!-- Security -->
+                    @if (User.HasPermission(AppPermissions.ViewUsers) ||
+                                        User.HasPermission(AppPermissions.ManageUsers))
                     {
-                        <li class="nav-item">
-                            <a asp-controller="Settings"
-                               asp-action="Index"
-                               class="nav-link @(controller == "Settings" ? "active" : "")">
+                        <li class="nav-item dropdown">
+
+                            <a class="nav-link dropdown-toggle @(controller == "Users" || controller == "Roles" || controller == "Permissions" ? "active" : "")"
+                               href="#"
+                               data-bs-toggle="dropdown">
+
+                                <i class="fa-solid fa-user-shield me-1"></i>
+
+                                Security
+
+                            </a>
+
+                            <ul class="dropdown-menu">
+
+                                <li>
+
+                                    <h6 class="dropdown-header">
+
+                                        Security Management
+
+                                    </h6>
+
+                                </li>
+
+                                @if (User.HasPermission(AppPermissions.ViewUsers))
+                                {
+                                    <li>
+
+                                        <a asp-controller="Users"
+                                           asp-action="Index"
+                                           class="dropdown-item">
+
+                                            <i class="fa-solid fa-users me-2 text-primary"></i>
+
+                                            Users
+
+                                        </a>
+
+                                    </li>
+                                }
+
+                                @if (User.HasPermission(AppPermissions.ManageUsers))
+                                {
+                                    <li>
+
+                                        <a asp-controller="Roles"
+                                           asp-action="Index"
+                                           class="dropdown-item">
+
+                                            <i class="fa-solid fa-user-tag me-2 text-success"></i>
+
+                                            Roles
+
+                                        </a>
+
+                                    </li>
+
+                                    <li>
+
+                                        <a asp-controller="Permissions"
+                                           asp-action="Index"
+                                           class="dropdown-item">
+
+                                            <i class="fa-solid fa-key me-2 text-warning"></i>
+
+                                            Permissions
+
+                                        </a>
+
+                                    </li>
+
+                                    <li>
+
+                                        <a asp-controller="AuditLogs"
+                                           asp-action="Index"
+                                           class="dropdown-item">
+
+                                            <i class="fa-solid fa-clock-rotate-left me-2 text-info"></i>
+
+                                            Audit Logs
+
+                                        </a>
+
+                                    </li>
+
+                                }
+
+                            </ul>
+
+                        </li>
+                    }
+
+                    <!-- Administration -->
+                    @if (User.HasPermission(AppPermissions.ManageSettings))
+                    {
+                        <li class="nav-item dropdown">
+
+                            <a class="nav-link dropdown-toggle"
+                               href="#"
+                               data-bs-toggle="dropdown">
+
                                 <i class="fa-solid fa-gears me-1"></i>
-                                Settings
+
+                                Administration
+
                             </a>
+
+                            <ul class="dropdown-menu">
+
+                                <li>
+
+                                    <a asp-controller="Settings"
+                                       asp-action="Index"
+                                       class="dropdown-item">
+
+                                        <i class="fa-solid fa-sliders me-2 text-primary"></i>
+
+                                        Settings
+
+                                    </a>
+
+                                </li>
+
+                                <li>
+
+                                    <a asp-controller="Jobs"
+                                       asp-action="Index"
+                                       class="dropdown-item">
+
+                                        <i class="fa-solid fa-server me-2 text-success"></i>
+
+                                        Background Jobs
+
+                                    </a>
+
+                                </li>
+
+                                <li>
+
+                                    <a asp-controller="System"
+                                       asp-action="Index"
+                                       class="dropdown-item">
+
+                                        <i class="fa-solid fa-microchip me-2 text-warning"></i>
+
+                                        System Information
+
+                                    </a>
+
+                                </li>
+
+                            </ul>
+
                         </li>
                     }
 
@@ -156,13 +464,13 @@
     </nav>
 
     <header class="page-header border-bottom bg-white">
-        <div class="container-fluid py-3">
+        <div class="container py-3">
             <h4 class="mb-0 fw-bold">@ViewData["Title"]</h4>
             <small class="text-muted">Merchant GST deduction and Ministry reporting</small>
         </div>
     </header>
 
-    <main class="container-fluid py-4">
+    <main class="container py-4">
         @RenderBody()
     </main>
 

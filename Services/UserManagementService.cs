@@ -2,6 +2,7 @@
 using Microsoft.Data.SqlClient;
 using SLMOFTaxPortal.Helpers;
 using SLMOFTaxPortal.Models;
+using SLMOFTaxPortal.Models.ViewModels;
 
 namespace SLMOFTaxPortal.Services;
 

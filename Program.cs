@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
+using SLMOFTaxPortal.Security;
 using SLMOFTaxPortal.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +11,8 @@ builder.Services.AddScoped<IMerchantManagementService, MerchantManagementService
 
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IUserManagementService, UserManagementService>();
+builder.Services.AddScoped<IRolePermissionService, RolePermissionService>();
+builder.Services.AddScoped<IPermissionService, PermissionService>();
 
 builder.Services
     .AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
@@ -23,29 +26,44 @@ builder.Services
 
 builder.Services.AddAuthorization(options =>
 {
-    options.AddPolicy("ViewDashboard", policy =>
-        policy.RequireClaim("Permission", "ViewDashboard"));
+    options.AddPolicy(AppPermissions.ViewDashboard, p =>
+        p.RequireClaim("Permission", AppPermissions.ViewDashboard));
 
-    options.AddPolicy("ViewTransactions", policy =>
-        policy.RequireClaim("Permission", "ViewTransactions"));
+    options.AddPolicy(AppPermissions.ViewTransactions, p =>
+        p.RequireClaim("Permission", AppPermissions.ViewTransactions));
 
-    options.AddPolicy("ExportTransactions", policy =>
-        policy.RequireClaim("Permission", "ExportTransactions"));
+    options.AddPolicy(AppPermissions.ExportTransactions, p =>
+        p.RequireClaim("Permission", AppPermissions.ExportTransactions));
 
-    options.AddPolicy("ViewMerchants", policy =>
-        policy.RequireClaim("Permission", "ViewMerchants"));
+    options.AddPolicy(AppPermissions.ViewMerchants, p =>
+        p.RequireClaim("Permission", AppPermissions.ViewMerchants));
 
-    options.AddPolicy("ManageMerchants", policy =>
-        policy.RequireClaim("Permission", "ManageMerchants"));
+    options.AddPolicy(AppPermissions.ManageMerchants, p =>
+        p.RequireClaim("Permission", AppPermissions.ManageMerchants));
 
-    options.AddPolicy("ViewUsers", policy =>
-        policy.RequireClaim("Permission", "ViewUsers"));
+    options.AddPolicy(AppPermissions.ViewUsers, p =>
+        p.RequireClaim("Permission", AppPermissions.ViewUsers));
 
-    options.AddPolicy("ManageUsers", policy =>
-        policy.RequireClaim("Permission", "ManageUsers"));
+    options.AddPolicy(AppPermissions.ManageUsers, p =>
+        p.RequireClaim("Permission", AppPermissions.ManageUsers));
 
-    options.AddPolicy("ManageSettings", policy =>
-        policy.RequireClaim("Permission", "ManageSettings"));
+    options.AddPolicy(AppPermissions.ViewRoles, p =>
+        p.RequireClaim("Permission", AppPermissions.ViewRoles));
+
+    options.AddPolicy(AppPermissions.ManageRoles, p =>
+        p.RequireClaim("Permission", AppPermissions.ManageRoles));
+
+    options.AddPolicy(AppPermissions.ViewPermissions, p =>
+        p.RequireClaim("Permission", AppPermissions.ViewPermissions));
+
+    options.AddPolicy(AppPermissions.ManagePermissions, p =>
+        p.RequireClaim("Permission", AppPermissions.ManagePermissions));
+
+    options.AddPolicy(AppPermissions.ViewAuditLogs, p =>
+        p.RequireClaim("Permission", AppPermissions.ViewAuditLogs));
+
+    options.AddPolicy(AppPermissions.ManageSettings, p =>
+        p.RequireClaim("Permission", AppPermissions.ManageSettings));
 });
 
 var app = builder.Build();
